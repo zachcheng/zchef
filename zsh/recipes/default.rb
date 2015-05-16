@@ -20,4 +20,11 @@ if developer
     group 'opsworks'
     action :create_if_missing
   end
+
+  template "/home/#{developer}/.oh-my-zsh/themes/prose.zsh-theme" do
+    source "prose.zsh-theme.erb"
+    owner developer
+    group 'opsworks'
+    action :create
+  end
 end
