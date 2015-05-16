@@ -1,0 +1,2 @@
+name        'zsh'
+maintainer  'zhi'

@@ -1,0 +1,134 @@
+" Stupid shift key fixes
+map:W :w
+map:WQ :wq
+map:wQ :wq
+map:Q :q
+map L $
+map H ^
+
+
+"imap <tab> <c-p>
+" disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+set ls=2
+set scrolloff=5
+set wildmenu
+set wildmode=list:longest,full
+" disable beeping
+set vb t_vb=
+set hls
+
+"searching
+set incsearch
+set ignorecase
+set smartcase
+
+set nocompatible
+syntax on
+filetype plugin indent on
+
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+set number
+set cindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set nowrap
+
+nnoremap ; :
+
+set backupdir=~/.vim/swp/backup
+set directory=~/.vim/swp/tmp
+au BufRead,BufNewFile *.scss set filetype=sass
+au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+
+inoremap <F6> :set nowrap<CR>
+inoremap <F7> :set wrap<CR>
+nnoremap <F6> :set nowrap<CR>
+nnoremap <F7> :set wrap<CR>
+let mapleader=","
+
+" Set where to recursively look for tag file
+" (it is actually located at ~/)
+set tags+=tags;~/
+
+" go to previous file
+nnoremap <leader><leader> <c-^>
+
+" remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" status bar coloring
+highlight StatusLine ctermfg=119 ctermbg=0
+"improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
+highlight PmenuSel ctermbg=1 gui=bold
+highlight Search ctermbg=darkgray ctermfg=white
+highlight Visual ctermbg=1 gui=bold
+"highlight CursorLine cterm=NONE ctermbg=8
+"set cursorline
+highlight Cursor guifg=white guibg=green
+set guicursor=n-v-c:block-Cursor
+
+" set colors for comments
+"hi Comment      ctermfg=21
+
+" Plugins can be in their own subdirectors in bundle.
+" E.g. :
+" cd ~/.vim/bundle
+" git clone git://github.com/tpope/vim-fugitive.git
+call pathogen#infect()
+
+" from JANUS
+" https://github.com/carlhuda/janus/blob/master/janus/vim/core/before/plugin/mappings.vim
+" switch buffers
+nmap <silent> <leader>. :bnext<CR>
+nmap <silent> <leader>m :bprev<CR>
+" switch tab
+nmap <silent> ;' :tabnext<CR>
+nmap <silent> ;l :tabprev<CR>
+" cd to directory of file in buffer
+nmap <silent> <leader>cd :lcd %:h<CR>
+" find merge conflict markers
+nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+
+" expands open command with directory of current file
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
+vmap <leader>bb :Tabularize /
+vmap <leader>vv :Tabularize /=><CR>
+
+set winwidth=120
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+set winheight=10
+set winminheight=10
+set winheight=999
+
+"dont scan included files for complete
+set complete-=i
+
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
