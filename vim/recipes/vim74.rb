@@ -13,6 +13,7 @@ end
 execute 'configure' do
   command <<-EOF.gsub /^\s+/, ""
     ./configure --with-features=huge --enable-rubyinterp \
+      --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7-config \
       --enable-gui=gtk2 --enable-cscope --prefix=/usr
   EOF
   cwd tmp_directory
