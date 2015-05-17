@@ -29,7 +29,7 @@ if developer
   end
 
   execute "set zsh as default shell for developer" do
-    command "chsh -s #{`which zsh`} #{developer}"
+    command "chsh -s #{`which zsh`.strip} #{developer}"
     user 'root'
   end
 
