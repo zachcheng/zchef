@@ -5,7 +5,7 @@ repository_host  = node[:source][:repository_host]
 directory source_path do
   owner source_user
   action :create
-  recursive :true
+  recursive true
 end
 
 git source_path do
