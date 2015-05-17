@@ -36,6 +36,7 @@ git source_path do
   repository repository_host
   enable_submodules true
   ssh_wrapper ssh_wrapper_path
+  user source_user
 end 
 
 execute "checkout master branch on repo" do
