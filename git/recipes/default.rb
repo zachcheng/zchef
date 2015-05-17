@@ -8,10 +8,10 @@ if developer
   Chef::Log.info "Git Developer Email: #{email}"
 
   template "/home/#{developer}/.gitconfig" do
-    variables(:email => email, :name  => name})
     source "gitconfig.erb"
     owner developer
     group 'opsworks'
+    variables :email => email, :name  => name
     action :create_if_missing
   end
 
