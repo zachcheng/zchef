@@ -27,4 +27,10 @@ if developer
     group 'opsworks'
     action :create
   end
+
+  execute "set zsh as default shell for developer -- chsh -s #{command 'which zsh'} #{developer}" do
+    command "chsh -s #{command 'which zsh'} #{developer}"
+    user 'root'
+  end
+
 end
