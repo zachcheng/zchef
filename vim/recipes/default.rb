@@ -2,7 +2,11 @@ vim_user = node[:vim][:user] || node[:developers][node[:opsworks][:instance][:ho
 Chef::Log.info "VIM User: #{vim_user}"
 
 if vim_user
-  load_recipe 'vim::vim74'
+
+  package 'vim-enhanced' do
+    options "./configure --with-features=huge --enable-rubyinterp \ --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7-config \ --enable-gui=gtk2 --enable-cscope --prefix=/usr"
+    action :upgrade
+  end
 
   install_pathogen do
     user vim_user
