@@ -10,7 +10,7 @@ template repository_ssh_private_key_path do
   source 'ssh_key.erb'
   variables :key => repository_ssh_private_key
   action :create
-  mode 0777
+  mode 0700
   user source_user
 end
 
@@ -19,7 +19,7 @@ template ssh_wrapper_path do
   source 'chef_deploy_ssh_wrapper.erb'
   variables :ssh_key_path => repository_ssh_private_key_path
   action :create
-  mode 0777
+  mode 0700
   user source_user
 end
 
