@@ -3,11 +3,12 @@ Chef::Log.info "Git Developer: #{developer}"
 
 if developer
 
-  @name = developer
-  @email = node[:git][developer]
-  Chef::Log.info "Git Developer Email: #{@email}"
+  name = developer
+  email = node[:git][developer]
+  Chef::Log.info "Git Developer Email: #{email}"
 
   template "/home/#{developer}/.gitconfig" do
+    variables(:email => email, :name  => name})
     source "gitconfig.erb"
     owner developer
     group 'opsworks'
