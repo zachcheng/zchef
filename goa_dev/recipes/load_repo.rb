@@ -10,6 +10,7 @@ template repository_ssh_private_key_path do
   source 'ssh_key.erb'
   variables :key => repository_ssh_private_key
   action :create
+  user source_user
 end
 
 # create the ssh wrapper
@@ -17,6 +18,7 @@ template ssh_wrapper_path do
   source 'chef_deploy_ssh_wrapper.erb'
   variables :ssh_key_path => repository_ssh_private_key_path
   action :create
+  user source_user
 end
 
 #create directory to place repo in
@@ -41,6 +43,11 @@ end
 
 # delete the key file
 file repository_ssh_private_key_path do
+  action :delete
+end
+
+# delete the wrapper file
+file ssh_wrapper_path do
   action :delete
 end
 
