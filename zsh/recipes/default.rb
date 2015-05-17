@@ -28,8 +28,8 @@ if developer
     action :create
   end
 
-  execute "set zsh as default shell for developer -- chsh -s #{command 'which zsh'} #{developer}" do
-    command "chsh -s #{command 'which zsh'} #{developer}"
+  execute "set zsh as default shell for developer" do
+    command "chsh -s /bin/zsh #{developer}"
     user 'root'
   end
 
