@@ -1,6 +1,7 @@
 default[:vim] = {}
 default[:vim][:plugins] = { "vim-ruby" => 'https://github.com/vim-ruby/vim-ruby.git',
   "vim-haml" => 'https://github.com/tpope/vim-haml.git',
+  "ctrlp.vim" => 'https://github.com/kien/ctrlp.vim.git',
   "vim-javascript" => 'https://github.com/pangloss/vim-javascript.git',
   "vim-coffee-script" => 'https://github.com/kchmck/vim-coffee-script.git',
   "tabular" => 'https://github.com/godlygeek/tabular.git',
