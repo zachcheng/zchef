@@ -1,6 +1,8 @@
 source "https://supermarket.chef.io"
 
 cookbook 'zsh'
+cookbook 'vim'
+cookbook 'goa_dev'
 
 metadata
 
