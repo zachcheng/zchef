@@ -32,7 +32,7 @@ if vim_user
   end
 
   execute 'root setup vimrc: symlink .vimrc in /root to vim_user .vimrc file' do
-    command "ln -s /home/#{vim_user}/.vimrc /root/.vimrc"
+    command "ln -snf /home/#{vim_user}/.vimrc /root/.vimrc"
   end
 
 end
