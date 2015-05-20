@@ -33,4 +33,19 @@ if developer
     user 'root'
   end
 
+  execute 'root shell setup: symlink .zshrc in /root to developer .zshrc file' do
+    command "ln -s /home/#{developer}/.zshrc /root/.zshrc"
+    user 'root'
+  end
+
+  execute 'root shell setup: symlink .oh-my-zsh in /root to developer .oh-my-zsh directory' do
+    command "ln -s /home/#{developer}/.oh-my-zsh /root/.oh-my-zsh"
+    user 'root'
+  end
+
+  execute 'root shell setup: make zsh default root shell' do
+    command "chsh -s #{`which zsh`.strip} root"
+    user 'root'
+  end
+
 end

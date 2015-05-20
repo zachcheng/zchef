@@ -30,4 +30,9 @@ if vim_user
     group 'opsworks'
     action :create_if_missing
   end
+
+  execute 'root setup vimrc: symlink .vimrc in /root to vim_user .vimrc file' do
+    command "ln -s /home/#{vim_user}/.vimrc /root/.vimrc"
+  end
+
 end
