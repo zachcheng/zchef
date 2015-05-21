@@ -14,6 +14,13 @@ if developer
     command "chown -R #{developer}:nginx /home/#{developer}/.oh-my-zsh"
   end
 
+  template "/home/#{developer}/.zprofile" do
+    source "zprofile.erb"
+    owner developer
+    group 'opsworks'
+    action :create_if_missing
+  end
+
   template "/home/#{developer}/.zshrc" do
     source "zshrc.erb"
     owner developer
