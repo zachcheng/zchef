@@ -9,6 +9,7 @@ end
 
 execute "install RVM for single user" do
   cwd "/home/#{developer}"
+  environment ({'HOME' => "/home/#{developer}", 'USER' => developer})
   command "curl -sSL https://get.rvm.io | bash -s stable"
   user "#{developer}"
 end 
