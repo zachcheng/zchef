@@ -10,14 +10,10 @@ end
 execute "install RVM for single user" do
   cwd "/home/#{developer}"
   environment ({'HOME' => "/home/#{developer}", 'USER' => developer})
-  command "curl -sSL https://get.rvm.io | bash -s stable"
+  command <<-EOH
+    curl -sSL https://get.rvm.io | bash -s stable
+    source ~/.rvm/scripts/rvm
+    rvm install 2.2.2
+  EOH
   user "#{developer}"
 end 
-
-execute "install ruby 2.2.2 for single user" do
-  cwd "/home/#{developer}"
-  environment ({'HOME' => "/home/#{developer}", 'USER' => developer})
-  command "rvm install 2.2.2"
-  user "#{developer}"
-end
-
