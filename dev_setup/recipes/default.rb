@@ -13,7 +13,7 @@ execute "install RVM for single user" do
   command <<-EOH
     curl -sSL https://get.rvm.io | bash -s stable
     source ~/.rvm/scripts/rvm
-    rvm install 2.2.2
+    ~/.rvm/bin/rvm install 2.2.2
   EOH
   user "#{developer}"
 end 
