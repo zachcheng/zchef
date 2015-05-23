@@ -14,3 +14,10 @@ execute "install RVM for single user" do
   user "#{developer}"
 end 
 
+execute "install ruby 2.2.2 for single user" do
+  cwd "/home/#{developer}"
+  environment ({'HOME' => "/home/#{developer}", 'USER' => developer})
+  command "rvm install 2.2.2"
+  user "#{developer}"
+end
+
