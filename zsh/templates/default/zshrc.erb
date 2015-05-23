@@ -14,8 +14,6 @@ PATH=~/bin:/sbin:$PATH
 export HISTFILE=~/.hist_zsh
 export HISTSIZE=30000
 export SAVEHIST=30000
-export RUBYLIB=/home/anadev/src/pentel/ruby_lib
-export A=/home/anadev/src
 export LC_CTYPE=en_US.UTF-8
 
 alias gitp="git pull --rebase"
@@ -34,13 +32,6 @@ alias gitsh='git show --ignore-space-change'
 alias gitspop="git stash pop"
 alias gitssave="git stash save"
 alias gitslist="git stash list"
-
-alias rwt="rspec spec/{controllers,helpers,integration,contexts}/**/*.rb"
-alias run_web_tests="rspec spec/{controllers,helpers,integration,contexts}/**/*.rb"
-alias rct="rspec spec/{controllers,model}/**/*.rb"
-alias run_rc_tests="rspec spec/{controllers,model}/**/*.rb"
-alias zspec="zeus rspec"
-alias genctags="cd ~/scripts/ctags;rake gen_ctags; cd -;"
 
 alias anadc="cd /home/anadev/src/referral_corner"
 alias anad="cd /home/anadev/src/"
