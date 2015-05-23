@@ -1,6 +1,10 @@
 developer = node[:developers][node[:opsworks][:instance][:hostname]] || 'zdefault'
 
-execute "set up rvm for developer" do
-  command "gpasswd -a #{developer} rvm"
+execute "get keys for RVM installation" do
+  command "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3"
+end 
+
+execute "install RVM for single user" do
+  command "curl -sSL https://get.rvm.io | bash -s stable"
 end 
 
