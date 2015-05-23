@@ -16,4 +16,13 @@ execute "install RVM for single user" do
     ~/.rvm/bin/rvm install 2.2.2
   EOH
   user "#{developer}"
+end
+
+execute "--no-rdoc --no-ri for gems" do
+  cwd "/home/#{developer}"
+  environment ({'HOME' => "/home/#{developer}", 'USER' => developer})
+  command <<-EOH
+    echo 'gem: --no-document' >> .gemrc
+  EOH
+  user "#{developer}"
 end 

@@ -54,4 +54,11 @@ file ssh_wrapper_path do
   action :delete
 end
 
-
+execute "Create and use the correct gemset for the app" do
+  cwd source_path
+  environment ({'HOME' => "/home/#{source_user}", 'USER' => source_user})
+  command <<-EOH
+    rvm use 2.2.2@goa --create
+  EOH
+  user "#{source_user}"
+end
