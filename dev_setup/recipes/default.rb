@@ -7,7 +7,7 @@ execute "get keys for RVM installation" do
   command "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3"
 end 
 
-execute "install RVM for single user" do
+execute "install RVM for single user including ruby 2.2.2" do
   cwd "/home/#{developer}"
   environment ({'HOME' => "/home/#{developer}", 'USER' => developer})
   command <<-EOH

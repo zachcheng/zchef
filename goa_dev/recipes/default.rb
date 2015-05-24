@@ -26,6 +26,7 @@ end
 #create directory to place repo in
 directory source_path do
   owner source_user
+  environment ({'HOME' => "/home/#{source_user}", 'USER' => source_user})
   action :create
   recursive true
 end
@@ -35,6 +36,7 @@ git source_path do
   action :sync
   repository repository_host
   enable_submodules true
+  environment ({'HOME' => "/home/#{source_user}", 'USER' => source_user})
   ssh_wrapper ssh_wrapper_path
   user source_user
 end 
