@@ -1,4 +1,5 @@
 source_path = node[:source][:path]
+source_container_path = node[:source][:container_path]
 source_user = node[:source][:user]
 repository_host  = node[:source][:repository_host]
 repository_ssh_private_key = node[:deploy]['gemsapp'][:scm][:ssh_key]
@@ -23,12 +24,16 @@ template ssh_wrapper_path do
   user source_user
 end
 
-#create directory to place repo in
+#create src directory to place repo in
+directory source_container_path do
+  owner source_user
+  action :create
+end
+
+#create goa directory to place repo in
 directory source_path do
   owner source_user
-  environment ({'HOME' => "/home/#{source_user}", 'USER' => source_user})
   action :create
-  recursive true
 end
 
 #pull the repo
@@ -36,7 +41,6 @@ git source_path do
   action :sync
   repository repository_host
   enable_submodules true
-  environment ({'HOME' => "/home/#{source_user}", 'USER' => source_user})
   ssh_wrapper ssh_wrapper_path
   user source_user
 end 
